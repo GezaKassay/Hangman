@@ -18,7 +18,8 @@ function hideLetters() {
 }
 
 function displaysWord() {
-    document.getElementById("wordToDisplay").innerHTML = displayWord + " " + displayWord.length + " letters";
+    document.getElementById("wordToDisplay").innerHTML = displayWord + " " + 
+    displayWord.length + " letters";
 }
 
 function setCharAt(str, index, chr) {
@@ -35,17 +36,18 @@ let lettersLeft = displayWord.length;
 
 function checkLetter() {
     let letter = document.getElementById("enterLetter").value;
-    let match = 0;       
+    let letterGuessed = 0;       
     for (let i = 0; i < checkWord.length; ++i) {
         if (letter === checkWord[i]) {
             displayWord = setCharAt(displayWord, i, letter);
-            ++match;
+            ++letterGuessed;
             --lettersLeft;
         }
     }
-    if (match === 0) {
+    if (letterGuessed === 0) {
         --life;
-        alert("You only have " + life + " lives left");
+        document.getElementById("finalMessage").innerHTML = 
+        `You only have ${life} lives left`;
     }    
     if (life <= 0) {
         document.getElementById("finalMessage").innerHTML = "You LOST!"
