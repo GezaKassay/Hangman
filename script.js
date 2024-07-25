@@ -47,7 +47,7 @@ function checkLetter() {
     if (letterGuessed === 0) {
         --life;
         document.getElementById("finalMessage").innerHTML = 
-        `You only have ${life} lives left`;
+            `You only have ${life} lives left`;
     }    
     if (life <= 0) {
         document.getElementById("finalMessage").innerHTML = "You LOST!"
