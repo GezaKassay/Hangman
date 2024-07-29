@@ -46,14 +46,18 @@ function checkLetter() {
     }
     if (letterGuessed === 0) {
         --life;
-        document.getElementById("finalMessage").innerHTML = 
-            `You only have ${life} lives left`;
+        displayLivesLeft();
     }    
     if (life <= 0) {
-        document.getElementById("finalMessage").innerHTML = "You LOST!"
+        document.getElementById("finalMessage").innerHTML = "You LOST!";
     } else if (lettersLeft === 0) {
-        document.getElementById("finalMessage").innerHTML = "You WON!"
+        document.getElementById("finalMessage").innerHTML = "You WON!";
     }
     displaysWord();
     document.getElementById("enterLetter").value = "";
+}
+
+function displayLivesLeft() {
+    document.getElementById("finalMessage").innerHTML = `You only have ${life} 
+        lives left`;
 }
