@@ -8,7 +8,7 @@ function shuffle(array) {
 let words = ["environmentalist", "banana", "knowlegable"];
 shuffle(words);
 let displayWord = words[0];
-let checkWord =  words[0];
+let checkWord = words[0];
 
 function hideLetters() {
     for (let i = 0; i < displayWord.length; ++i) {
@@ -19,11 +19,11 @@ function hideLetters() {
 
 function displaysWord() {
     document.getElementById("wordToDisplay").innerHTML = displayWord + " " + 
-    displayWord.length + " letters";
+        displayWord.length + " letters";
 }
 
 function setCharAt(str, index, chr) {
-    if (index > str.length-1) return str;
+    if (index > str.length - 1) return str;
     return str.substring(0, index) + chr + str.substring(index + 1);
 }
 
@@ -46,18 +46,21 @@ function checkLetter() {
     }
     if (letterGuessed === 0) {
         --life;
-        displayLivesLeft();
-    }    
-    if (life <= 0) {
-        document.getElementById("finalMessage").innerHTML = "You LOST!";
-    } else if (lettersLeft === 0) {
-        document.getElementById("finalMessage").innerHTML = "You WON!";
+        displayMessage(letterGuessed);
     }
+    displayMessage(lettersLeft);      
+    displayMessage(life);
     displaysWord();
-    document.getElementById("enterLetter").value = "";
+    document.getElementById("enterLetter").value = "";    
 }
 
-function displayLivesLeft() {
-    document.getElementById("finalMessage").innerHTML = `You only have ${life} 
-        lives left`;
+function displayMessage(parameter) {
+    if (parameter === 0 && lettersLeft > 0 && life > 0) {
+        document.getElementById("finalMessage").innerHTML = `You only have 
+            ${life} lives left`;
+    } else if (parameter === 0 && life > 0) {
+        document.getElementById("finalMessage").innerHTML = "You WON!";
+    } else if (parameter === 0) {
+        document.getElementById("finalMessage").innerHTML = "You LOST!";
+    }
 }
